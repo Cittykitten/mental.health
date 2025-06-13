@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Mindful Mental Health</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #5d93e4;
+            --secondary: #f5f7fa;
+            --accent: #ff6b6b;
+            --text: #333;
+            --light-text: #666;
+            --white: #fff;
+            --emergency: #ff4757;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--secondary);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #4a7bc8;
+            transform: translateY(-2px);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+        }
+        
+        .btn-accent:hover {
+            background-color: #e05555;
+        }
+        
+        .btn-emergency {
+            background-color: var(--emergency);
+            font-size: 18px;
+            padding: 15px 30px;
+        }
+        
+        .btn-emergency:hover {
+            background-color: #e8413a;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: var(--light-text);
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .mobile-menu .bar {
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            position: absolute;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu .bar:nth-child(1) {
+            top: 0;
+        }
+        
+        .mobile-menu .bar:nth-child(2) {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .mobile-menu .bar:nth-child(3) {
+            bottom: 0;
+        }
+        
+        .mobile-menu.active .bar:nth-child(1) {
+            transform: translateY(13.5px) rotate(45deg);
+        }
+        
+        .mobile-menu.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-menu.active .bar:nth-child(3) {
+            transform: translateY(-13.5px) rotate(-45deg);
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #e0f7fa 0%, #f8f9fa 100%);
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .page-header p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Support Options */
+        .support-options {
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .option-card {
+            background-color: var(--secondary);
+            border-radius: 10px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .option-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .option-icon {
+            font-size: 50px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .option-card h3 {
+            color: var(--primary);
+        }
+        
+        /* Immediate Help */
+        .immediate-help {
+            background-color: #fff5f5;
+            text-align: center;
+        }
+        
+        .help-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .help-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 40px 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-top: 5px solid var(--emergency);
+        }
+        
+        .help-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .help-icon {
+            font-size: 50px;
+            color: var(--emergency);
+            margin-bottom: 20px;
+        }
+        
+        .help-card h3 {
+            color: var(--emergency);
+        }
+        
+        .phone-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--emergency);
+            margin: 15px 0;
+        }
+        
+        /* Support Groups */
+        .support-groups {
+            background-color: var(--secondary);
+        }
+        
+        .groups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .group-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .group-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .group-info {
+            padding: 25px;
+        }
+        
+        .group-name {
+            font-size: 22px;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .group-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: var(--light-text);
+        }
+        
+        .group-meta i {
+            margin-right: 5px;
+            color: var(--primary);
+        }
+        
+        /* Self-Help Resources */
+        .self-help {
+            background-color: var(--white);
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .resource-card {
+            background-color: var(--secondary);
+            border-radius: 10px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .resource-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .resource-card h3 {
+            color: var(--primary);
+        }
+        
+        /* FAQ Section */
+        .faq {
+            background-color: var(--secondary);
+        }
+        
+        .faq-item {
+            background-color: var(--white);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 25px;
+            font-size: 18px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 100px 40px 40px;
+                transition: left 0.3s ease;
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            
+            .page-header h1 {
+                font-size: 36px;
+            }
+            
+            .page-header p {
+                font-size: 18px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .phone-number {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Mind<span>ful</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="emergency.html">Emergency Help</a></li>
+                    <li><a href="therapists.html">Find a Therapist</a></li>
+                    <li><a href="support.html" class="active">Support</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Find the Support You Need</h1>
+            <p>Whether you're looking for immediate help, professional therapy, or community support, we're here to guide you.</p>
+        </div>
+    </section>
+
+    <!-- Support Options -->
+    <section class="support-options">
+        <div class="container">
+            <div class="section-title">
+                <h2>Support Options</h2>
+                <p>Choose the type of support that fits your needs</p>
+            </div>
+            <div class="options-grid">
+                <div class="option-card">
+                    <div class="option-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Crisis Support</h3>
+                    <p>Immediate help for urgent mental health needs</p>
+                    <a href="emergency.html" class="btn">Get Help Now</a>
+                </div>
+                <div class="option-card">
+                    <div class="option-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Professional Therapy</h3>
+                    <p>Connect with licensed mental health professionals</p>
+                    <a href="therapists.html" class="btn">Find a Therapist</a>
+                </div>
+                <div class="option-card">
+                    <div class="option-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Support Groups</h3>
+                    <p>Join communities of people with similar experiences</p>
+                    <a href="#" class="btn">Browse Groups</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Immediate Help -->
+    <section class="immediate-help">
+        <div class="container">
+            <div class="section-title">
+                <h2>Immediate Help</h2>
+                <p>24/7 support for crisis situations</p>
+            </div>
+            <div class="help-cards">
+                <div class="help-card">
+                    <div class="help-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>National Suicide Prevention Lifeline</h3>
+                    <p>Free, confidential support for people in distress, 24/7</p>
+                    <div class="phone-number">988</div>
+                    <a href="tel:988" class="btn btn-emergency">Call Now</a>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon">
+                        <i class="fas fa-comment-alt"></i>
+                    </div>
+                    <h3>Crisis Text Line</h3>
+                    <p>Text with a trained crisis counselor for immediate support</p>
+                    <div class="phone-number">Text HOME to 741741</div>
+                    <a href="sms:741741" class="btn btn-emergency">Text Now</a>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3>Veterans Crisis Line</h3>
+                    <p>Specialized support for veterans and their families</p>
+                    <div class="phone-number">1-800-273-8255 (Press 1)</div>
+                    <a href="tel:18002738255" class="btn btn-emergency">Call Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Groups -->
+    <section class="support-groups">
+        <div class="container">
+            <div class="section-title">
+                <h2>Support Groups</h2>
+                <p>Connect with others who understand what you're going through</p>
+            </div>
+            <div class="groups-grid">
+                <div class="group-card">
+                    <div class="group-img" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="group-info">
+                        <h3 class="group-name">Anxiety Support Circle</h3>
+                        <div class="group-meta">
+                            <span><i class="far fa-calendar-alt"></i> Tuesdays, 6PM</span>
+                            <span><i class="fas fa-users"></i> 8-12 members</span>
+                        </div>
+                        <p>A safe space to share experiences and learn coping strategies for managing anxiety.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="group-card">
+                    <div class="group-img" style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="group-info">
+                        <h3 class="group-name">Grief & Healing</h3>
+                        <div class="group-meta">
+                            <span><i class="far fa-calendar-alt"></i> Thursdays, 7PM</span>
+                            <span><i class="fas fa-users"></i> 10-15 members</span>
+                        </div>
+                        <p>For those navigating the complex emotions of loss and seeking healing in community.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="group-card">
+                    <div class="group-img" style="background-image: url('https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                    <div class="group-info">
+                        <h3 class="group-name">LGBTQ+ Youth Support</h3>
+                        <div class="group-meta">
+                            <span><i class="far fa-calendar-alt"></i> Wednesdays, 5PM</span>
+                            <span><i class="fas fa-users"></i> 6-10 members</span>
+                        </div>
+                        <p>A welcoming space for LGBTQ+ youth (ages 14-21) to connect and share experiences.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn btn-accent">View All Support Groups</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Self-Help Resources -->
+    <section class="self-help">
+        <div class="container">
+            <div class="section-title">
+                <h2>Self-Help Resources</h2>
+                <p>Tools and information to support your mental health journey</p>
+            </div>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Guided Journals</h3>
+                    <p>Printable journals with prompts for self-reflection and emotional processing.</p>
+                    <a href="#" class="btn btn-outline">Download</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3>Meditation Guides</h3>
+                    <p>Audio recordings for mindfulness, relaxation, and stress reduction.</p>
+                    <a href="#" class="btn btn-outline">Listen Now</a>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Recommended Apps</h3>
+                    <p>Curated list of mental health apps for various needs and conditions.</p>
+                    <a href="#" class="btn btn-outline">View List</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about getting support</p>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I know if I need professional help?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Consider seeking professional help if your symptoms persist for more than two weeks, interfere with your daily life, or cause significant distress. Signs may include persistent sadness or anxiety, difficulty functioning at work/school, changes in sleep or appetite, or thoughts of self-harm.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What's the difference between therapy and support groups?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Therapy involves one-on-one work with a licensed professional who provides individualized treatment. Support groups are peer-led or professionally facilitated gatherings where people with similar experiences share and support each other. Many people benefit from both.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How much does therapy typically cost?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Costs vary widely depending on location, therapist credentials, and whether they accept insurance. Many therapists offer sliding scale fees based on income, and some community clinics provide low-cost services. Online therapy platforms often have more affordable options.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Are online support groups effective?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, research shows online groups can be just as effective as in-person for many people. They offer greater accessibility and convenience, especially for those in remote areas or with mobility challenges. Look for moderated groups with clear guidelines.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Mindful</h3>
+                    <p>Dedicated to providing accessible mental health resources and support to everyone.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="emergency.html">Emergency Help</a></li>
+                        <li><a href="therapists.html">Find a Therapist</a></li>
+                        <li><a href="support.html">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support Options</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Crisis Support</a></li>
+                        <li><a href="#">Therapy Options</a></li>
+                        <li><a href="#">Support Groups</a></li>
+                        <li><a href="#">Self-Help Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> help@mindful.com</li>
+                        <li><i class="fas fa-phone"></i> (800) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Wellness St, Suite 100</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Mindful. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle with Hamburger Animation
+        const mobileMenuBtn = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            // Prevent scrolling when menu is open
+            if (navLinks.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Highlight current page in navigation
+        const currentPage = window.location.pathname.split('/').pop();
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
